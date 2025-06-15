@@ -48,3 +48,39 @@ print(d) # ['AB', 'BA']
 
 
 # 3️⃣ 請嘗試幾種不同的優化的方法？ 暫時想不到
+
+# 參考解答再自己寫一次
+# 學到的用法:
+# 1. 用換位置的思維來做排列組合
+# 2. itertools.permutations
+# import itertools
+# itertools.permutations(列表, r=None排列的長度)
+
+# for i in permutations(s):
+#     print(''.join(i))
+
+
+# 方法二
+s = input() # AB
+unique_strlist = set(s)
+d = []
+
+def permute(s,i,length):
+    # 如果已經排列到最後一個字母（即 i == length），代表一組排列完成
+    if i==length:
+        d.append(''.join(s))
+    else:
+        for j in range(i,length): # 從當前位置 i 開始，將每個 j 與 i 交換
+            s[i],s[j] = s[j],s[i] # 交換：把第 j 個字母換到位置 i
+            permute(s,i+1,length) # 遞迴：往下一層排列剩下的字母
+            s[j], s[i] = s[i], s[j] # 換回來：回溯（恢復原來順序），避免影響下一輪的排列
+   
+permute(list(unique_strlist),0,len(unique_strlist))
+print(sorted(d)) # ['AB', 'BA']
+
+# 方法三
+from itertools import permutations
+s = input() # AB
+d = [''.join(i) for i in permutations(s)]
+
+print(d) # ['AB', 'BA']
