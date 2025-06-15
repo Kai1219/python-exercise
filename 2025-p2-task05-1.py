@@ -53,9 +53,14 @@ print(d) # ['AB', 'BA']
 # 學到的用法:
 # 1. 用換位置的思維來做排列組合
 # 2. itertools.permutations
-# import itertools
-# itertools.permutations(列表, r=None排列的長度)
+# import itertools #匯入 itertools 模組
+# itertools.permutations(iterable, r=None)
+# iterable：可迭代物件（如 list、str）
+# r：排列長度，預設是整個 iterable 的長度
+# 回傳的是 iterator，可以用 for 迴圈逐個取出，或用 list() 一次展開
 
+# 範例：印出所有字母排列組合
+# from itertools import permutations
 # for i in permutations(s):
 #     print(''.join(i))
 
