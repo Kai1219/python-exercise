@@ -7,7 +7,6 @@
 # ❏ Sample Output #1: 2 ← 畫面輸出（說明：爬到 2 階可能是 1 + 1 or 2）
 # ❏ Sample Input #2: 3 ← 使用者輸入
 # ❏ Sample Output #2: 3 ← 畫面輸出（說明：爬到 3 階可能是 1 + 1 + 1 or 1 + 2 or 2 + 1）
-n = input()  
 
 # 輸入1，回傳1>[1]
 # 輸入2，回傳2>[1,1]、[2]
@@ -17,14 +16,22 @@ n = input()
 # 輸入6，回傳13=8+5>[1,1,1,1,1,1]、[1,1,1,1,2]、[1,1,2,2],[2,2,2]
 # 輸入n，回傳?=(n-1的排列組合)+(n-2的排列組合)
 
+n = input()  
+x = int(n)
 
-def level(n):
-    a = 1
-    b = 2
-    p = [1,2]
+def climb_stairs(n):
+    if n ==0:
+        return 1
+    if n==1:
+        return 1
+    if n ==2:
+        return 2
+    ways = [1,1,2]
 
-    for i in range(3,4):
-        p[i] = p[i-1]+p[i-2]
-    return p
-d = level(3)
-print(d) #IndexError: list index out of range
+    for i in range(3,n+1):
+        ways.append(ways[i-1]+ways[i-2])
+
+    return ways[n]
+
+d = climb_stairs(x)
+print(d) # 2
