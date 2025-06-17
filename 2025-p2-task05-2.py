@@ -17,25 +17,25 @@
 # 輸入n，回傳?=(n-1的排列組合)+(n-2的排列組合)
 
 # 方法一
-# n = input()  
-# x = int(n)
+n = input()  
+x = int(n)
 
-# def climb_stairs(n):
-#     if n ==0:
-#         return 1
-#     if n==1:
-#         return 1
-#     if n ==2:
-#         return 2
-#     ways = [1,1,2]
+def climb_stairs(n):
+    if n ==0:
+        return 1
+    if n==1:
+        return 1
+    if n ==2:
+        return 2
+    ways = [1,1,2]
 
-#     for i in range(3,n+1):
-#         ways.append(ways[i-1]+ways[i-2])
+    for i in range(3,n+1):
+        ways.append(ways[i-1]+ways[i-2])
 
-#     return ways[n]
+    return ways[n]
 
-# d = climb_stairs(x)
-# print(d) # 2
+d = climb_stairs(x)
+print(d) # 2
 
 # 1️⃣ 這個題目對你來說難易度為何？＿4顆星＿
 # 自己分的等級:
